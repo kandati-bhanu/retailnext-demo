@@ -1,14 +1,15 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
 
-  # Allow static files (CSS, JS, images, fonts)
+  # Serve existing files directly (CSS, JS, images, fonts)
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
-  # Allow directories
+  # Serve existing directories
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # SPA fallback
+  # React SPA fallback
   RewriteRule . /index.html [L]
 </IfModule>
