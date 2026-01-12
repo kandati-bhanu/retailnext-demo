@@ -2,14 +2,13 @@
   RewriteEngine On
   RewriteBase /
 
-  # Serve existing files directly (CSS, JS, images, fonts)
+  # Serve static files directly
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
-  # Serve existing directories
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # React SPA fallback
+  # SPA fallback
   RewriteRule . /index.html [L]
 </IfModule>
