@@ -1,8 +1,14 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Allow static files (CSS, JS, images, fonts)
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Allow directories
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback
   RewriteRule . /index.html [L]
 </IfModule>
